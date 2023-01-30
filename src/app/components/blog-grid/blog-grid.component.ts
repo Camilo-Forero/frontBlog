@@ -17,7 +17,6 @@ export class BlogGridComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('la data: ', this.searchEntry.entryData);
     if(this.searchEntry.entryData.length != 0)
     {
       this.entrys = this.searchEntry.entryData;

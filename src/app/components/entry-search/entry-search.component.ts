@@ -38,9 +38,7 @@ export class EntrySearchComponent implements OnInit {
 
   bringSearch()
   {
-    console.log(this.searchForm.value);
     this.entry.getByName(this.searchForm.value).forEach((val)=>{
-      console.log('El cotoplo', val);
       this.searchEntry.entryData = val;
     });
   }
