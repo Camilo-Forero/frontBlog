@@ -1,0 +1,76 @@
+<div class="album py-5 bg-light">
+    <div class="container">
+        <form 
+            class="row g-3"
+            [formGroup]="dataForm"
+            #idDataForm
+            (submit)="sendData()"
+        >
+            <div class="col-md-12">
+                <label for="inputEmail4" class="form-label">Tittle</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="tittle"
+                    formControlName="tittle"
+                    (blur)="this.errorsDOM(this.dataForm.controls['tittle'], 'tittle')"
+                    (change)="this.errorsDOM(this.dataForm.controls['tittle'], 'tittle')"
+                >
+                <div class="col-md-12 invalid-feedback">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <label for="inputPassword4" class="form-label">Description</label>
+                <textarea 
+                    class="form-control rounded-0" 
+                    rows="12"
+                    id="description"
+                    formControlName="description"
+                    (blur)="this.errorsDOM(this.dataForm.controls['description'], 'description')"
+                    (change)="this.errorsDOM(this.dataForm.controls['description'], 'description')"
+                ></textarea>
+                <div class="col-md-12 invalid-feedback">
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="inputZip" class="form-label">Image</label>
+                <input 
+                    class="form-control" 
+                    type="file" 
+                    id="img"
+                    formControlName="img"
+                    (blur)="this.errorsDOM(this.dataForm.controls['img'], 'img')"
+                    (change)="this.errorsDOM(this.dataForm.controls['img'], 'img'); this.fileuploaded($event)"
+                >
+                <div class="col-md-12 invalid-feedback">
+                </div>
+                <br>
+                <div class="col-md-6">
+                    <img width="20%" height="20%" src="{{this.imgbase64['base']}}" *ngIf="this.imgbase64 !== undefined">
+                </div>
+            </div>
+            <div class="col-12" *ngIf="this.snapshotArr != 0">
+              <div class="form-check">
+                <input 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    id="status"
+                    formControlName="status"
+                >
+                <label class="form-check-label" for="gridCheck">
+                  Active
+                </label>
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary" *ngIf="this.snapshotArr == 0">Create</button>
+              <button type="submit" class="btn btn-primary" *ngIf="this.snapshotArr != 0">Update</button>
+            </div>
+          </form>
+          <br>
+          <div class="alert alert-success" role="alert" *ngIf="this.success != ''">
+            {{this.success}}
+          </div>
+          
+    </div>
+</div>

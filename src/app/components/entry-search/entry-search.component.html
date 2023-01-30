@@ -1,0 +1,22 @@
+<form 
+    class="col-md-12"
+    [formGroup]="searchForm"
+    (submit)="bringSearch()"
+>
+    <div class="row">
+        <div class="col-md-6">
+            <input 
+            class="form-control form-control-dark text-bg-dark" 
+            list="browsers" 
+            name="browser" 
+            id="browser" 
+            formControlName="tittle"
+            (keyup)="keyUpFn($event)"
+            >
+            <datalist id="browsers">
+                <app-entry-data-list *ngFor="let entry of entrys" [entry]="entry"></app-entry-data-list>
+            </datalist>
+        </div>
+        <button type="submit" class="btn btn-primary col-md-2">Search</button>
+    </div>
+</form>

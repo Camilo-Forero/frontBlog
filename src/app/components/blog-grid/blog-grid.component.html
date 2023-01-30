@@ -1,0 +1,35 @@
+<main>
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <section class="py-5 text-center container" *ngIf="entrys.length == 0">
+          <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light">The blog is empty!</h1>
+              <p class="lead text-muted">add some fantastic entry or interesting article</p>
+              <p>
+                <a routerLink="entry" class="btn btn-primary my-2">New entry</a>
+              </p>
+            </div>
+          </div>
+        </section>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" *ngIf="this.searchEntry.entryData.length == 0">
+          <app-entry-card *ngFor="let entry of entrys" [entry]="entry"></app-entry-card>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" *ngIf="this.searchEntry.entryData.length != 0">
+          <app-entry-card *ngFor="let entry of this.searchEntry.entryData" [entry]="entry"></app-entry-card>
+        </div>
+      </div>
+    </div>
+</main>
+  
+  <footer class="text-muted py-5">
+    <div class="container">
+      <p class="float-end mb-1">
+        <a href="#">Back to top</a>
+      </p>
+      <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself!</p>
+      <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.3/getting-started/introduction/">getting started guide</a>.</p>
+    </div>
+  </footer>
+    
+  <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
